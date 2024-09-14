@@ -1,1 +1,50 @@
-<h1>Buzzer</h1>
+<body bgColor="red" />
+
+<script>
+
+	document.onmousedown = function() {
+		start_buzzer()
+	}
+
+	document.onmouseup = function() {
+		stop_buzzer()
+	}
+
+	var audio = new AudioContext()
+
+	var tone
+
+	// "sine", "square", "sawtooth", "triangle"
+	function create_tone(frequency, type) {
+		oscillator = audio.createOscillator()
+		oscillator.frequency.value = frequency
+		oscillator.type = type
+
+		gain = audio.createGain()
+		gain.gain.value = 0.25
+
+		oscillator.connect(gain)
+		gain.connect(audio.destination)
+
+		return oscillator	
+	}
+
+	tone_frequency = 112
+	tone_type = "square"
+
+	function start_buzzer() {
+		if (tone && tone.playing) {
+			stop_buzzer()
+		}
+
+		tone = create_tone(tone_frequency, tone_type)
+		tone.start(0)
+		tone.playing = true
+	}
+
+	function stop_buzzer() {
+		tone.stop(0)
+		tone.playing = false
+	}
+
+</script>
