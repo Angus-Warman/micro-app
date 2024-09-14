@@ -1,0 +1,139 @@
+<select id="names_selection" onchange="new_output()">
+	<option value="wizard" label="Wizard" />
+	<option value="angel" label="Angel" />
+	<option value="demon" label="Demon" />
+	<option value="knight" label="Knight" />
+	<option value="commoner" label="Commoner" />
+</select>
+<br />
+<br />
+<div id="names_output"></div>
+<br />
+<button onclick="new_output()">New</button>
+
+<script>
+	function r(x){return Math.floor(Math.random() * x)}
+
+	Array.prototype.sample = function () {
+		var index = Math.floor(Math.random() * this.length)
+		var output = this[index]
+		
+		if(Array.isArray(output))
+			return output.sample()
+		
+		if (output == undefined)
+			console.error("Sample returned undefined, index "+index)
+
+		return output
+	}
+
+
+	function get_selected() {
+		return document.getElementById("names_selection").value
+	}
+
+	function new_output() {
+		var selected = get_selected()
+		var name = generate_name(selected)
+		document.getElementById("names_output").innerHTML = name
+	}
+
+	function generate_name(type) {
+		switch(type) {
+			case "wizard":
+				return generate_wizard_name()
+			case "angel":
+				return generate_angel_name()
+			case "demon":
+				return generate_demon_name()
+			case "knight":
+				return generate_knight_name()
+			case "commoner":
+				return generate_commoner_name()
+		}
+	}
+
+	function generate_wizard_name() {
+
+		var part = [`Alch`,`Ambro`,`Aug`,`Baggy`,`Bals`,`Bazh`,`Beaver`,`Beggars`,`Bipp`,`Blim`,`Bock`,`Bogg`,`Boof`,`Bork`,`Bottom`,`Broad`,`Buck`,`Bumb`,`Burner`,`Burzy`,`Bush`,`Bushy`,`Castle`,`Charm`,`Chook`,`Chum`,`Clutter`,`Cocin`,`Conju`,`Cra`,`Crad`,`Cumber`,`Dapp`,`Dhun`,`Din`,`Dinker`,`Divin`,`Doodle`,`Doop`,`Dread`,`Drub`,`Elmsley`,`Ernst`,`Eston`,`Exo`,`Fany`,`Fartle`,`Feffer`,`Ferd`,`Figgy`,`Finch`,`Fister`,`Forby`,`Fordshire`,`Fudge`,`Furge`,`Gae`,`Gant`,`Gap`,`Gax`,`Giggles`,`Gleep`,`Glum`,`Gooch`,`Grog`,`Gross`,`Hagat`,`Hal`,`Hale`,`Hand`,`Hard`,`Hargag`,`Hass`,`Hex`,`Hocus`,`Hool`,`Horn`,`Hossen`,`Hrum`,`Hulm`,`Hyggs`,`Ington`,`Jank`,`Jinx`,`Joff`,`Jolly`,`Kal`,`Kill`,`Knacker`,`Knicker`,`Kor`,`Koz`,`Kramm`,`Krang`,`Krotch`,`Lack`,`Lapper`,`Lick`,`Lord`,`Lorg`,`Magus`,`Maxi`,`Mus`,`Pow`,`Er`,`Man`,`Mazz`,`Meat`,`Meem`,`Milsh`,`Minge`,`Mo`,`Moisten`,`Molp`,`Mon`,`Moon`,`Mooth`,`Mugg`,`Nabb`,`Napper`,`Nasty`,`Nether`,`Nex`,`Oort`,`Paag`,`Packer`,`Pang`,`Panty`,`Penny`,`Piddle`,`Pimple`,`Pincher`,`Pipt`,`Pizzle`,`Pizzle`,`Plinker`,`Pocus`,`Prick`,`Prissy`,`Pubb`,`Pudding`,`Pyu`,`Quisp`,`Raco`,`Rams`,`Ramst`,`Rapp`,`Riddle`,`Road`,`Rod`,`Rool`,`Rump`,`Rune`,`Ryz`,`Sass`,`Seer`,`Shaft`,`Shafts`,`Shag`,`Shitling`,`Shoot`,`Shuffle`,`Skremp`,`Slapper`,`Slipper`,`Smelly`,`Snatch`,`Snicker`,`Sniffen`,`Sniffer`,`Spittle`,`Staff`,`Staffer`,`Star`,`Stith`,`Stone`,`Strating`,`Stratling`,`Stroop`,`Stroot`,`Stumble`,`Sundar`,`Tankle`,`Thok`,`Thorpe`,`Throck`,`Thwyp`,`Tinker`,`Tunn`,`Turkey`,`Tzim`,`Uk`,`Ul`,`Ur`,`Ursk`,`Urz`,`Val`,`Vela`,`Vex`,`Voll`,`Vree`,`Waddle`,`Waggler`,`Wall`,`Wallop`,`Wand`,`Washer`,`Wattle`,`Whistle`,`Wick`,`Wiggle`,`Willow`,`Wimple`,`Worme`,`Wort`,`Worthy`,`Wozz`,`Wump`,`Wurp`,`Xim`,`Yann`,`Yar`,`Ygg`,`Ylur`,`Zap`,`Zoot`,`Zsand`,`Zur`,`Curse`,`Flame`,`Dark`,`Null`,`Light`,`Vill`,`Green`,`Red`,`Blue`,`Time`,`Space`,`Redact`,`Scroll`,`Skull`,`Grow`,`Never`,`Alway`,`Fever`,`Silk`,`Diab`,`Illus`,`Magnet`,`Ism`,`Ology`,`Sorc`,`One`,`Seven`,`Eleven`,`Three`,`Cipher`,`Ur`,`Gr`,`Val`,`Van`,`Von`,`Zul`]
+
+
+		return `${part.sample()}${part.sample().toLowerCase()} ${part.sample()}${part.sample().toLowerCase()}`
+	}
+
+	function generate_angel_name() {
+		return String(50+r(50))+` `+[`White`,`Black`,`Red`,`Blue`,`Green`,`Aquamarine`,`Golden`,`Indigo`,`Radiant`,`Dark`,`Bright`,`Juggernaut`,`Liminal`,`Furious`,`Vigilant`,`Wilful`,`Turbulent`,`Shining`,`Sorrowful`,`Ardent`,`Adamant`,`Painful`,`Docile`,`Frozen`,`Burning`,`Cold`,`Hot`,`Verdant`,`Silent`,`Hopeful`,`Endless`,`Infinite`,`Gilded`,`Paper`,`Bloody`,`Recursive`,`Empty`,`Holy`,`Final`].sample()+` `+[`Chain`,`Blossom`,`Star`,`Gaze`,`Blade`,`Disc`,`Stream`,`River`,`Ocean`,`Mountain`,`Tower`,`Temple`,`Shield`,`Spear`,`Flame`,`Cloud`,`Storm`,`Wave`,`Tide`,`Tree`,`Gale`,`Dome`,`Tome`,`Orb`,`Scar`,`Breath`,`Song`,`Voice`,`Word`,`Thorn`,`Stone`,`Concordance`,`Spirit`,`Field`,`Hammer`,`Chisel`,`Ingot`,`Smoke`,`Crown`,`Wing`,`Chariot`,`Bridge`,`Flower`,`Continent`,`Comet`,`Moon`,`Meteor`,`Anvil`,`Forge`,`Mask`,`Student`,`Feather`,`Scale`,`Hand`,`Eye`,`Sigil`].sample()+` `+[`Subdues`,`Scours`,`Punctures`,`Purges`,`Accuses`,`Protects`,`Combats`,`Apprehends`,`Breaks`,`Shatters`,`Heals`,`Repairs`,`Engulfs`,`Questions`,`Crushes`,`Perceives`,`Analyzes`,`Enlightens`,`Seals`,`Defeats`,`Vanquishes`,`Knows`,`Finds`,`Obliterates`,`Preserves`].sample()+` `+[`Evil`,`the Universe`,`the Unrepentant`,`the Horizon`,`the Void`,`Darkness`,`the Truthful`,`the Untruthful`,`the Fortunate`,`the Unfortunate`,`the Sinful`,`God`,`the Gods`,`the Repentant`,`the Wise`,`the Unwise`,`the Holy`,`the Unholy`,`the World`,`Civilization`,`the Proud`,`the Greedy`,`the Lustful`,`the Wrathful`,`the Gluttonous`,`the Envious`,`the Slothful`,`the Meek`,`the Poor`,`the Hungry`,`the Dead`,`the Living`,`the Sun`,`Space-Time`,`the Wicked`,`Truth`,`Reality`,`Lies`,`the Virtuous`,`all Heretics and Cowards`].sample()
+	}
+
+	function generate_demon_name() {
+		var demon_names = ["AEHRENTHAL","AGEET","AGLIETTI","ALBARELLO","ALTMANN","AMERMAN","AMPERE","ANHAUSER","ANNUS","APERS","ARCHER","ARDINGHI","ARESTI","ARROITAJAUREGI","ASTRUC","AUDENAERT","BAEN","BAHN","BAIA","BAIX","BALZER","BARATTIN","BARDHA","BARNEVELD","BASAGLIA","BASTNAGEL","BEAUMAIS","BELODODIA","BENOIT","BENSCHEIDT","BENSON","BESSE","BESSETTE","BINAGHI","BINUS","BLAUVELT","BOOGAARD","BOOGAARD","BOSMAN","BOTIGLIERI","BOUCHEZ","BOUDOUANI","BOUGHE","BOUSSAC","BOUSSOD","BOUVARD","BRANDONI","BRANDONI","BRAZZI","BRECHT","BREZEANU","BRIANE","BRIMOU","BRINDAL","BRUNE","BRYS","CACCIOLA","CADONI","CAEIRO","CAFASSO","CAPELLARI","CARLUCCI","CASTRO","CATTANEO","CAUX","CHARLIER","CHEVILLON","CHRIST","CIMABUE","CIRIACO","CITTE","CITTE","CLAAR","CLARET","CLERIDES","COERS","COHL","COLIAR","CONCEICAO","CONIL","CONTENCIN","CORSINI","CRISTOSTOME","CUMIN","DALLAPICCOLA","DANVILLE","DATI","DEBAERE","DEBAKKER","DEBAVELAERE","DELAET","DELAROUX","DEMARTELAERE","DESBIENS","DESCHAMPS","DESTATTE","DEWIT","DOBBELAER","DOBRE","DODOS","DONATELLO","DUDNIC","DUVIVIER","DUZANT","ECONOMAKIS","EHULETCHE","EILTS","EMBURGH","ENDRESS","ENGELS","EPPSTEIN","ESCHENBACH","EXEL","FAZLIU","FERTTET","FESYEUR","FIERS","FIOROLI","FITIPALDI","FLIEGLE","FLORIDO","FOFAO","FRANSZ","GALVANONI","GANDIAGA","GAUBATZ","GAUTHIOT","GEREKE","GESERER","GIESEN","GISLENUS","GLASS","GOLINO","GOTTIGNIE","GOURON","GOURON","GRAAF","GRIMAULT","GUENTHNER","GUERINI","GUIFFART","GUTERRES","GUTTUSO","HAAN","HALILI","HEGEL","HEIDENFELDER","HELMERICHS","HENDRICKSE","HESS","HINZ","HLADY","HOFMAN","HOLLO","HOLZKNECHT","HYSENI","ILIEV","INTERLENGHI","ISTRATESCU","JAKOBS","JIOFRAX","JULIA","KAMMERER","KIPP","KLEINENDORST","KLEMERT","KOELMEL","KOLB","KONDYLIS","KREUGER","LACKNER","LALANDE","LANGEY","LAROS","LAVANCHY","LEGOUT","LEGROS","LEHMANN","LEMERCIER","LEONTE","LIPPELT","LIXANDROIU","LOBINGER","LOEF","LOIT","LONGUET","LORENZ","LOTH","LOUBENS","LUCETTI","LUMANI","LUPESCU","LUPORINI","NAIN","NAUMANN","NERIUS","NERO","NIELANDT","NOTABARTOLA","OUDINOT","OVERMEIRE","PACELLI","PAILLARD","PANCALDI","PARILLAUD","PECCHIA","PEIS","PELLETIER","PERRONET","PHIESEL","PIEL","PIERIDES","PIERPOINT","PININFERINO","PISA","PISTOHLKORS","PIZZUL","PLOOSNAR","POLI","POMMERAIE","POPPE","POZZI","PROPERZI","PUSTERLA","RALLI","RAPHANEL","RECK","REDIK","REDIK","REGEL","REINELT","REINER","RENER","REVAY","RIMBAUD","RIZZO","RODRUP","ROM","ROMARY","ROSSLAR","ROTSCH","RUNGGALDIER","SBARRO","SCHAECTER","SCHAFFROT","SCHAMS","SCHETT","SCHOLLIERS","SCHROFF","SCHULTZ","SCROVEGNI","SEIDEL","SEIFERT","SEPPELT","SERATO","SERVIAN","SESTOO","SESTOO","SEYDOUX","SIMONEAU","SIPPEL","SLOVENSKY","SOULETTE","SOUVALTZIS","STAMBOLISKI","STAUBEL","STEFFY","STEFONIOU","STEINSCHNEIDER","STRAUT","STREET","STROBBENS","SVARCZ","SZABO","TAILLEBOIS","TARANTINO","TESCARI","THEILE","TOBA","TOMACELLI","TORRITI","TRAGIANOPOULOS","TROGER","TRUYENS","ULLESEN","URIAGA","VALENOD","VASTI","VERHULST","VITTOZ","VIZZONI","VLISSINGEN","VOORHIS","WAERT","WAMBERGUE","WISE","WISSANT","ZAMBRANA","ZAMPIERI","HAMANN","HOCH","SENUE","ERTL","BERNAT","PARRILLA","PAULETA","SIDOTI","DAENIS","GARGIULO","GERRITS","CAMELOT","HOUSSAYE","RIEFF","AHMETAJ","NAVILLE","KLINGBERG","IBARROLA","POLYDOROU","ZIGANDA","OLEALD","AVEROFF","BESSI","VELDKAMP","PUYLAERT","BRYS","RETZNER","YORDANYOTOV","CALZA","FUCHILLO","PITU","ZAITUC","PLASAIT","NAVEGERO","FOFAO","HAHLO","PIER","BALLEROY","HENCHOZ","LARDENOIT","LUSSU","PLANKENSTEINER","THEOPHANOUS","AMITI","HOELEBRAND","BECDELIEVRE","ESCOUTOU","ZIE","STEINHAUSER","CHIOSTRO","RUST","GOJENOLA","BELLEHACHE","SUASTEGUI","BOTTANET","TXERTUDI","LICTENEGGER","STOICHITA","VAUVILLE","DUMESNIL","SCHOLL","COTEEL","ROMENEL","PACELLI","MARCHANT","GURTRICH","MARGELASSE","VIDEK","SARINO","NEKMUNNIT","KORYZIS","SYKES","GALLI","AMETXAZURRA","SAGUNA","FOLETIER","SAUN","LIEBERMANN","SURROI","PIERIDES","HAGI","PETRESCU","GERRATANA","BOULANGE","DONINI","CROSSETTE","PRODAN","GIES","CORBUCCA","GIARDINA","ILIE","HEUREUX","GAUCI","BERNADIS","HOKA","GORRIARAN","CROUSE","SARDZETAKIS","WOUTERSE","NIEUWENHUYZEN","SILGUY","SURIN","ARESTEGI","TIMMERMANS","IATRIDES","HAMONCOURT","WIESE","REVIERS","VICCIO","TOURETTE","BAZIRE","BREYTENBACH","PECELY","PESSEINGIMPEL","LOPPER","BARTOLINI","CARNINI","GRUBO","AKEN","SARDINI","PAPAKOSTAS","POMBAL","DOBBELAERE","KANELLOPOULOS","NEUVILLE","GRUPPI","ASCHENBACH","CENCIO","GIANINI","BONENFFANT","KALLAY","TORRIGIANI","CHATELLAIN","BOGART","HOPPE","RAMBERT","BEELDENS","ALDOBRANDINI","DERR","DEMONGEOT","GRONY","ZOLA","ROMPU","CHABOCHE","SOLLERS","BUCI","GRIEM","STRASHILOVA","SICCO","YETALAND","INGROVILLE","FONZARELLI","WENZ","FORAY","BARTOLF","FIACCONI","EHRENBURG","RAAB","DELACROIX","LAMBRECHTS","CRISTEA","KALECI","CACAJ","FRUQUEST","SAUVAIGO","DAUTZENBURG","LUCCHETTI","ROUWENS","JAEKE","DUQUESNE","ZOFFOLI","DONCKERS","LEONE","SELYMES","HERBAUT","LALANNE","STREET","COSTACURTA","ISERBYT","STUYVESANT","COTEEL","POLYDOROU","HOKA","CURTAYNE","DETONNELAERE","URIOSTE","RUSCHIN","BOEL","BLEOM","BOURDEKIN","FILION","NARBARTE","TUOMINO","HOXHA","ASTEASU","BOSANQUET","MAREE","TAPANELLI","BOUTAYRE","SBARRO"];
+
+		return `${demon_names.sample()}${demon_names.sample()}`
+	}
+
+	function generate_knight_name() {
+		 var knight_first_name = [`Cagrant`,`Ustrando`,`Filius`,`Scaramanx`,`Heptimus`,`Ostrio`,`Honkus`,`Agylo`,`Primbaster`,`Glindal`,`Fargle`,`Grungo`,`Marworn`,`Sealor`,`Boon`,`Immuth`,`Yorgach`,`Klimp`,`Aster`,`Gonk`,`Dundrah`,`Fantonius`,`Gaggamore`,`Vorch`,`Saunder`,`Stacha`,`Addic`,`Punja`,`Tatak`,`Ornul`,`Khard`,`Ingrot`,`Anzel`,`Nobbilo`,`Pranxa`,`Xanadar`,`Zoopulus`,`Kromulo`,`Emzen`,`Woostifer`,`Mirthby`,`Kragamut`,`Shemiver`,`Rumtally`,`Imbrabinus`,`Ploob`,`Essem`,`Kroyden`,`Gullencast`,`Flixmander`,`Bolzagorath`,`Ummork`,`Plindle`,`Durgadang`,`Manchiver`,`Oodal`,`Leegand`,`Bosko`,`Haflump`,`Mordvey`,`Fernison`,`Glamgam`,`Orstrak`,`Kunstanticus`,`Ergon`,`Dassadal`,`Bleestocles`,`Wilverham`,`Zelligant`,`Irshal`,`Umber`,`Happalapa`,`Zorkon`,`Thurbert`,`Maxipoom`,`Donzany`,`Klarkash`,`Merjam`,`Elziger`,`Ashteban`,`Mercoolio`,`Cazio`,`Hurlen`,`Vlamdibulus`,`Hargus`,`Bomgoster`,`Geliphant`,`Trangol`,`Moorgang`,`Gronwhist`,`Chrontiphar`,`Lalifax`,`Raglio`,`Trulhamar`,`Linkat`,`Vergath`,`Mungo`,`Rakkatak`,`Lazorz`,`Nysbustah`];
+
+		 var knight_last_name = [`Zsand`,`Gleep`,`Wurp`,`Ul`,`Thok`,`Meem`,`Pubb`,`Skremp`,`Nex`,`Drub`,`Vree`,`Gooch`,`Hargag`,`Doop`,`Wozz`,`Furge`,`Forby`,`Grog`,`Dapp`,`Kor`,`Blim`,`Yar`,`Tzim`,`Ursk`,`Pizzle`,`Pang`,`Dhun`,`Rool`,`Rapp`,`Lorg`,`Xim`,`Hrum`,`Bogg`,`Krotch`,`Stith`,`Boof`,`Tankle`,`Mooth`,`Hagat`,`Raco`,`Thwyp`,`Bazh`,`Stroot`,`Crad`,`Ramst`,`Wump`,`Mugg`,`Din`,`Voll`,`Gant`,`Ylur`,`Paag`,`Hool`,`Hass`,`Stroop`,`Sass`,`Ambro`,`Quisp`,`Burzy`,`Koz`,`Mazz`,`Rump`,`Krang`,`Hulm`,`Gax`,`Nex`,`Glum`,`Zoot`,`Jank`,`Oort`,`Nex`,`Molp`,`Ferd`,`Sundar`,`Pipt`,`Mo`,`Urz`,`Ygg`,`Yann`,`Tunn`,`Bipp`,`Vela`,`Bork`,`Ryz`,`Milsh`,`Chook`,`Nabb`,`Val`,`Ernst`,`Bock`,`Hyggs`,`Chum`,`Zur`,`Kal`,`Uk`,`Ur`,`Mon`,`Joff`,`Pyu`,`Kramm`];
+
+		 var knight_appelation = [`Pious`,`Faithful`,`Loyal`,`Holy`,`Flatulent`,`Dirty`,`Malodorous`,`Hairy`,`Gigantic`,`Tiny`,`Wandering`,`Loathsome`,`Handsome`,`Hideous`,`Accursed`,`Arbitrary`,`Forgetful`,`Clumsy`,`Graceful`,`Honorable`,`Lame`,`Maimed`,`One-Eyed`,`Half-wit`,`Orphan`,`Mad`,`Insane`,`Visionary`,`Gallant`,`Wealthy`,`Destitute`,`Thrifty`,`Twisted`,`Evil`,`Nefarious`,`Hungry`,`Gaunt`,`Fat`,`Cowardly`,`Brave`,`Courageous`,`Foolhardy`,`Vainglorious`,`Cheating`,`Lying`,`Thieving`,`Reprehensible`,`Adulterous`,`Lecherous`,`Spiteful`,`Generous`,`Mean`,`Cruel`,`Unforgiving`,`Cannibal`,`Just`,`Reasonable`,`Unflappable`,`Unkillable`,`Dubious`,`Enchanted`,`Hexed`,`Hedonist`,`Celibate`,`Celebrated`,`Virtuous`,`Famous`,`Well-Known`,`Lovable`,`Sadistic`,`Masochistic`,`Mystical`,`Beastly`,`Tattooed`,`Love-lorn`,`Woeful`,`Mourning`,`Weeping`,`Virgin`,`Blind`,`Deaf`,`Mute`,`Stupid`,`Vengeful`,`Peaceful`,`Drunken`,`Legless`,`Club-Footed`,`Mysterious`,`Masked`,`Legendary`,`Unknown`,`Inexperienced`,`Veteran`,`Questing`,`Dutiful`,`Polygamist`,`Starving`,`Twelve-Fingered`,`Hairless`];
+
+		 return `Sir ${knight_first_name.sample()} ${knight_last_name.sample()} the ${knight_appelation.sample()}`
+	}
+
+	function generate_commoner_name() {
+
+		var vowels = ["A", "E", "I", "O", "U", "Y"]
+		var sound = ["nk","gg","gy","tt","pp",`ed`,`ff`,`ph`,`gh`,`lf`,`ft`,`gg`,`wh`,`ge`,`di`,`gg`,`ch`,`cc`,`lk`,`ck`,`ll`,`mm`,`mb`,`mn`,`lm`,`gn`,`pn`,`pp`,`rr`,`wr`,`rh`,`ss`,`sc`,`ps`,`st`,`ce`,`se`,`tt`,`th`,`ed`,`ph`,`ve`,`wh`,`zz`,`ze`,`se`,`si`,`ch`,`tu`,`ti`,`te`,`sh`,`ce`,`ci`,`si`,`ch`,`ti`,`th`,`th`]
+
+		var letter_freq = { 
+			"E": 0.1202,
+			"T": 0.091,
+			"A": 0.0812,
+			"O": 0.0768,
+			"I": 0.0731,
+			"N": 0.0695,
+			"S": 0.0628,
+			"R": 0.0602,
+			"H": 0.0592,
+			"D": 0.0432,
+			"L": 0.0398,
+			"U": 0.0288,
+			"C": 0.0271,
+			"M": 0.0261,
+			"F": 0.023,
+			"Y": 0.0211,
+			"W": 0.0209,
+			"G": 0.0203,
+			"P": 0.0182,
+			"B": 0.0149,
+			"V": 0.0111,
+			"K": 0.0069,
+			"X": 0.0017,
+			"Q": 0.0011,
+			"J": 0.001,
+			"Z": 0.0008 
+		}
+
+		var name = ""
+		var name_length = 4+r(3)
+
+		for (var i = 0; i < name_length; i++) {
+			var x = Math.random()
+			var total = 0
+
+			for (const [ letter, freq ] of Object.entries(letter_freq)) {
+				total += freq
+				if (total > x) {
+					name += letter
+					break
+				}
+			}
+		}
+
+		return name[0]+name.substr(1).toLowerCase()
+	}
+
+	new_output()
+
+</script>
