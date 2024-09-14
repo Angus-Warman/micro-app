@@ -2,9 +2,11 @@
 
 <script>
 
-	document.onmousedown = function() {
-		start_buzzer()
-	}
+	document.onmousedown = start_buzzer
+	document.ontouchstart = start_buzzer
+
+	document.onmouseup = stop_buzzer
+	document.ontouchend = stop_buzzer
 
 	document.onmouseup = function() {
 		stop_buzzer()
